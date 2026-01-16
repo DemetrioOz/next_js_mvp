@@ -1,0 +1,30 @@
+export const notebooksDashMock = {
+  status: [
+    "BACKUP",
+    "COM USUARIO",
+    "CONSERTO",
+    "DESCARTADO",
+    "DESCARTE",
+    "DESLIGAMENTO",
+    "EM CONFERENCIA",
+    "ESTOQUE",
+    "FIELD",
+    "FURTADO",
+    "S/STATUS",
+    "SUBSTITUIDA",
+    "TESTE",
+  ],
+  locadoras: {
+    smartphone: ["Arklok", "BRMobile"],
+    notebook: ["Voke", "Arklok"],
+  },
+  localizations: [
+    "Campo Bom",
+    "Porto Alegre",
+    "Alphaville",
+    "Pinheiros",
+    "Belem",
+    "Home Office",
+    "Guarulhos",
+  ],
+};
