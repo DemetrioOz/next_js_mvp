@@ -5,9 +5,9 @@ export function proxy(request: NextRequest) {
   const path = url.pathname;
   const token = request.cookies.get("token")?.value;
 
-  const isPublic = path === "/pricing" || path === "/sign-in";
+  const isPublic = path === "/pricing" || path === "/";
   // const isAuthTarget = path === "/dashb:";
-  const redirectTo: string = "/"; // home
+  const redirectTo: string = "/sign-in"; // home
 
   if (path === redirectTo && !token) return NextResponse.next();
 
@@ -21,12 +21,12 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (token && isPublic) {
-    if (path !== redirectTo) {
-      return NextResponse.redirect(new URL(redirectTo, request.url));
-    }
-    return NextResponse.next();
-  }
+  // if (token && isPublic) {
+  //   if (path !== redirectTo) {
+  //     return NextResponse.redirect(new URL(redirectTo, request.url));
+  //   }
+  //   return NextResponse.next();
+  // }
 
   return NextResponse.next();
 }
