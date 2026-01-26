@@ -1,9 +1,9 @@
-import { getBaseUrl } from "@/app/lib/url";
+import { getBaseUrl } from '@/app/lib/url';
 
 async function getDashboardData() {
   const baseUrl = getBaseUrl();
   const res = await fetch(`${baseUrl}/api/equipament`, {
-    cache: "no-store",
+    cache: 'no-store',
   });
   const data = await res.json();
   return data;

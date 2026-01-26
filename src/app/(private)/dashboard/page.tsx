@@ -1,13 +1,14 @@
-import { ChartLineal } from "@/app/components/chartLineal";
-import { Menu } from "@/app/components/menu";
-import { getBaseUrl } from "@/app/lib/url";
+import { ChartLineal } from '@/app/components/chartLineal';
+import { Menu } from '@/app/components/menu';
+import { getBaseUrl } from '@/app/lib/url';
 
 async function getDashboardData() {
   const baseUrl = getBaseUrl();
   const res = await fetch(`${baseUrl}/api/dashboard`, {
-    cache: "no-store",
+    cache: 'no-store',
   });
   const data = await res.json();
+  console.log(data);
   return data;
 }
 
@@ -15,7 +16,7 @@ export default async function Dashboard() {
   const data = await getDashboardData();
 
   return (
-    <div className="columns is-gapless" style={{ minHeight: "100vh" }}>
+    <div className="columns is-gapless" style={{ minHeight: '100vh' }}>
       <Menu />
       <main className="column">
         <h2 className="title is-4">Visão Geral</h2>
@@ -59,12 +60,8 @@ export default async function Dashboard() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="has-text-weight-medium">
-                      Carregador Notebook
-                    </td>
-                    <td className="has-text-weight-medium has-text-grey">
-                      Campo Bom
-                    </td>
+                    <td className="has-text-weight-medium">Carregador Notebook</td>
+                    <td className="has-text-weight-medium has-text-grey">Campo Bom</td>
                     <td className="has-text-weight-extrabold">20</td>
                     <td>
                       <span className="icon has-text-danger">
@@ -74,9 +71,7 @@ export default async function Dashboard() {
                   </tr>
                   <tr>
                     <td className="has-text-weight-medium">Notebook</td>
-                    <td className="has-text-weight-medium has-text-grey">
-                      Campo Bom
-                    </td>
+                    <td className="has-text-weight-medium has-text-grey">Campo Bom</td>
                     <td className="has-text-weight-extrabold">30</td>
                     <td>
                       <span className="icon has-text-warning">
@@ -85,12 +80,8 @@ export default async function Dashboard() {
                     </td>
                   </tr>
                   <tr>
-                    <td className="has-text-weight-medium">
-                      Carregador Notebook
-                    </td>
-                    <td className="has-text-weight-medium has-text-grey">
-                      Campo Bom
-                    </td>
+                    <td className="has-text-weight-medium">Carregador Notebook</td>
+                    <td className="has-text-weight-medium has-text-grey">Campo Bom</td>
                     <td className="has-text-weight-extrabold">40</td>
                     <td></td>
                   </tr>

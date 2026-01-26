@@ -1,15 +1,15 @@
-"use client";
-import { useState, FormEvent } from "react";
-import Image from "next/image";
-import { getBaseUrl } from "@/app/lib/url";
-import logo from "@/app/assets/img/stock_logo.png";
-import { useRouter } from "next/navigation";
+'use client';
+import { useState, FormEvent } from 'react';
+import Image from 'next/image';
+import { getBaseUrl } from '@/app/lib/url';
+import logo from '@/app/assets/img/stock_logo.png';
+import { useRouter } from 'next/navigation';
 
 export default function SignIn() {
   const { push } = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const onHandleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,20 +19,20 @@ export default function SignIn() {
     const baseUrl = getBaseUrl();
 
     const res = await fetch(`${baseUrl}/api/auth`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
     });
-    setEmail("");
-    setPassword("");
+    setEmail('');
+    setPassword('');
 
     if (res.ok) {
-      push("/dashboard");
+      push('/dashboard');
     } else {
       const message = await res.text();
-      setError(message || "Por favor faça o login para prosseguir.");
+      setError(message || 'Por favor faça o login para prosseguir.');
     }
   };
 
@@ -43,13 +43,7 @@ export default function SignIn() {
           <div className="column is-4 is-offset-4 box">
             <div className="has-text-centered mb-5">
               <figure className="image is-128x128 is-inline-block">
-                <Image
-                  src={logo}
-                  alt="Logo"
-                  width={128}
-                  height={128}
-                  priority
-                />
+                <Image src={logo} alt="Logo" width={128} height={128} priority />
               </figure>
             </div>
             <hr className="login-hr" />

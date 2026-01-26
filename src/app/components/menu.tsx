@@ -1,6 +1,6 @@
 export const Menu = () => {
   return (
-    <aside className="menu m-3 m-3" style={{ width: "15vw" }}>
+    <aside className="menu m-3 m-3" style={{ width: '15vw' }}>
       <p className="menu-label">General</p>
       <ul className="menu-list">
         <li>

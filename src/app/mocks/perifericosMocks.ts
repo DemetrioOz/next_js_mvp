@@ -1,8 +1,8 @@
 export const perifericosMocks = [
   {
     id: 1,
-    model: "Dell 1120",
-    type: "headset",
+    model: 'Dell 1120',
+    type: 'headset',
     amout: 123,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -10,8 +10,8 @@ export const perifericosMocks = [
   },
   {
     id: 2,
-    model: "Dell 1220",
-    type: "mouse",
+    model: 'Dell 1220',
+    type: 'mouse',
     amout: 123,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -19,8 +19,8 @@ export const perifericosMocks = [
   },
   {
     id: 3,
-    model: "Dell 1120",
-    type: "keyboard",
+    model: 'Dell 1120',
+    type: 'keyboard',
     amout: 123,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -28,8 +28,8 @@ export const perifericosMocks = [
   },
   {
     id: 4,
-    model: "Dell keyboard",
-    type: "monitor",
+    model: 'Dell keyboard',
+    type: 'monitor',
     amout: 123,
     createdAt: new Date(),
     updatedAt: new Date(),
