@@ -1,0 +1,86 @@
+erDiagram
+
+    USERS ||--o{ ASSET_ASSIGNMENTS : has
+    ASSETS ||--o{ ASSET_ASSIGNMENTS : assigned_in
+    ASSETS }o--|| ASSET_TYPES : type
+    ASSETS }o--|| LOCATIONS : located_at
+    ASSETS ||--o{ MAINTENANCE : has
+    ASSET_ASSIGNMENTS ||--|| TERMS : generates
+    USERS ||--o{ AUDIT_LOGS : creates
+
+    USERS {
+        int id PK
+        string name
+        string email
+        string role
+        boolean active
+        datetime created_at
+    }
+
+    ASSETS {
+        int id PK
+        string asset_tag
+        string serial_number
+        int asset_type_id FK
+        string brand
+        string model
+        string status
+        decimal cost
+        date purchase_date
+        date warranty_end
+        int location_id FK
+        datetime created_at
+    }
+
+    ASSET_TYPES {
+        int id PK
+        string name
+        string category
+    }
+
+    LOCATIONS {
+        int id PK
+        string name
+        string room
+    }
+
+    ASSET_ASSIGNMENTS {
+        int id PK
+        int asset_id FK
+        int user_id FK
+        datetime assigned_at
+        datetime expected_return_at
+        datetime returned_at
+        string assignment_type
+    }
+
+    MAINTENANCE {
+        int id PK
+        int asset_id FK
+        int reported_by FK
+        string description
+        string status
+        decimal cost
+        string vendor
+        datetime opened_at
+        datetime closed_at
+    }
+
+    TERMS {
+        int id PK
+        int asset_assignment_id FK
+        int accepted_by FK
+        datetime accepted_at
+        string file_url
+    }
+
+    AUDIT_LOGS {
+        int id PK
+        int user_id FK
+        string entity
+        int entity_id
+        string action
+        json old_value
+        json new_value
+        datetime created_at
+    }

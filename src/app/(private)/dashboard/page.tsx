@@ -1,4 +1,3 @@
-import { ChartLineal } from '@/app/components/chartLineal';
 import { Menu } from '@/app/components/menu';
 import { getBaseUrl } from '@/app/lib/url';
 
@@ -42,9 +41,7 @@ export default async function Dashboard() {
         </div> */}
         <div className="columns">
           <div className="column">
-            <div className="box">
-              <ChartLineal obj={data} />
-            </div>
+
           </div>
           <div className="column">
             <div className="box">

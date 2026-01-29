@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  role      String // admin, assets, servicedesk, user
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  assignments AssetAssignment[]
+  auditLogs   AuditLog[]
+  // maintenanceReports Maintenance[]     @relation("ReportedMaintenance")
+  // terms       Term[]
+}
+
+model Colaborators {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  assignments AssetAssignment[]
+  auditLogs   AuditLog[]
+  // maintenanceReports Maintenance[]     @relation("ReportedMaintenance")
+  // terms       Term[]
+}
+
+model Asset {
+  id           String    @id @default(uuid())
+  assetTag     String    @unique
+  serialNumber String?   @unique
+  brand        String
+  model        String
+  status       String // estoque, em_uso, manutencao, descarte, perdido
+  cost         Decimal?
+  purchaseDate DateTime?
+  warrantyEnd  DateTime?
+  createdAt    DateTime  @default(now())
+
+  assetTypeId String
+  locationId  String
+
+  assetType AssetType @relation(fields: [assetTypeId], references: [id])
+  location  Location  @relation(fields: [locationId], references: [id])
+
+  assignments AssetAssignment[]
+  // maintenance Maintenance[]
+}
+
+model AssetType {
+  id       String @id @default(uuid())
+  name     String
+  category String
+
+  assets Asset[]
+}
+
+model Location {
+  id   String  @id @default(uuid())
+  name String
+  room String?
+
+  assets Asset[]
+}
+
+model AssetAssignment {
+  id               String    @id @default(uuid())
+  assetId          String
+  userId           String
+  assignedAt       DateTime  @default(now())
+  expectedReturnAt DateTime?
+  returnedAt       DateTime?
+  assignmentType   String // onboarding, troca, emprestimo
+
+  asset Asset @relation(fields: [assetId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
+
+  // term Term?
+  colaborators   Colaborators? @relation(fields: [colaboratorsId], references: [id])
+  colaboratorsId String?
+}
+
+// model Maintenance {
+//   id          Int       @id @default(uuid())
+//   assetId     Int
+//   reportedBy  Int
+//   description String
+//   status      String // aberto, em_andamento, fechado
+//   cost        Decimal?
+//   vendor      String?
+//   openedAt    DateTime  @default(now())
+//   closedAt    DateTime?
+
+//   asset    Asset @relation(fields: [assetId], references: [id])
+//   reporter User  @relation("ReportedMaintenance", fields: [reportedBy], references: [id])
+// }
+
+// model Term {
+//   id                Int      @id @default(uuid())
+//   assetAssignmentId Int      @unique
+//   acceptedBy        Int
+//   acceptedAt        DateTime @default(now())
+//   fileUrl           String
+
+//   assignment AssetAssignment @relation(fields: [assetAssignmentId], references: [id])
+//   user       User            @relation(fields: [acceptedBy], references: [id])
+// }
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String
+  entity    String
+  entityId  String
+  action    String // CREATE, UPDATE, DELETE
+  oldValue  Json?
+  newValue  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user           User          @relation(fields: [userId], references: [id])
+  colaborators   Colaborators? @relation(fields: [colaboratorsId], references: [id])
+  colaboratorsId String?
+}
