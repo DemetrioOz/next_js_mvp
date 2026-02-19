@@ -48,6 +48,7 @@ model Asset {
   serialNumber String?   @unique
   brand        String
   model        String
+  rentalOwner  String
   status       String // estoque, em_uso, manutencao, descarte, perdido
   cost         Decimal?
   purchaseDate DateTime?

@@ -1,14 +1,15 @@
 "use client";
 import React, { useState } from "react";
 
-export const Accordion = (props: { title: string; children: React.ReactNode }) => {
-  const [state, setState] = useState({ cardState: false });
+export const Accordion = (props: { title: string; children: React.ReactNode, opened?: boolean }) => {
+  const { title, children, opened } = props;
+  const [state, setState] = useState({ cardState: opened || false });
 
   const toggleCardState = () => {
     setState({ cardState: !state.cardState });
   };
 
-  const { title, children } = props;
+
   const { cardState } = state;
 
   return (
