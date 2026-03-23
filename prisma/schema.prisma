@@ -42,18 +42,25 @@ model Colaborators {
   // terms       Term[]
 }
 
+enum AssetStatus {
+  ESTOQUE
+  EM_USO
+  MANUTENCAO
+  DESCARTE
+  PERDIDO
+}
+
 model Asset {
-  id           String    @id @default(uuid())
-  assetTag     String    @unique
-  serialNumber String?   @unique
+  id           String      @id @default(uuid())
+  assetTag     String      @unique
+  serialNumber String?     @unique
   brand        String
   model        String
-  rentalOwner  String
-  status       String // estoque, em_uso, manutencao, descarte, perdido
+  status       AssetStatus
   cost         Decimal?
   purchaseDate DateTime?
   warrantyEnd  DateTime?
-  createdAt    DateTime  @default(now())
+  createdAt    DateTime    @default(now())
 
   assetTypeId String
   locationId  String
@@ -70,7 +77,8 @@ model AssetType {
   name     String
   category String
 
-  assets Asset[]
+  assets           Asset[]
+  assetAssignments AssetAssignment[]
 }
 
 model Location {
@@ -81,14 +89,20 @@ model Location {
   assets Asset[]
 }
 
+enum AssetAssign {
+  ONBOARDING
+  TROCA
+  EMPRESTIMO
+}
+
 model AssetAssignment {
-  id               String    @id @default(uuid())
+  id               String      @id @default(uuid())
   assetId          String
   userId           String
-  assignedAt       DateTime  @default(now())
+  assignedAt       DateTime    @default(now())
   expectedReturnAt DateTime?
   returnedAt       DateTime?
-  assignmentType   String // onboarding, troca, emprestimo
+  assignmentType   AssetAssign
 
   asset Asset @relation(fields: [assetId], references: [id])
   user  User  @relation(fields: [userId], references: [id])
@@ -96,6 +110,8 @@ model AssetAssignment {
   // term Term?
   colaborators   Colaborators? @relation(fields: [colaboratorsId], references: [id])
   colaboratorsId String?
+  assetTypeId    String
+  assetType      AssetType     @relation(fields: [assetTypeId], references: [id])
 }
 
 // model Maintenance {
