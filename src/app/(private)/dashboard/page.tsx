@@ -4,6 +4,7 @@ import { GraphicDash } from './(components)/GraphicDash';
 import { Needs } from './(components)/Needs';
 import { DataViewer } from './(components)/DataViewer';
 import { getDashboardData } from './(services)';
+import { Navbar } from '@/app/components/Navbar';
 
 export default async function Dashboard() {
   const data = await getDashboardData();
@@ -13,7 +14,7 @@ export default async function Dashboard() {
     <div className="columns is-gapless" style={{ minHeight: '100vh' }}>
       <Menu />
       <main className="column">
-        <h2 className="title is-3 m-4">Visão Geral</h2>
+        <Navbar />
         <DataViewer />
         <div className="columns">
           <GraphicDash />
