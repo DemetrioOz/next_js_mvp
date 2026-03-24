@@ -1,8 +1,12 @@
-export const Navbar = () => {
+type NavbarProps = {
+  title: string;
+}
+
+export const Navbar = ({ title }: NavbarProps) => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <h2 className="title is-3 m-4">Visão Geral</h2>
+        <h2 className="title is-3 m-4">{title}</h2>
       </div>
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start"></div>

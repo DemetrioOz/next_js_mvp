@@ -6,7 +6,7 @@ export default function Notebook() {
     <div className="columns is-gapless" style={{ minHeight: '100vh' }}>
       <Menu />
       <div className="column">
-        <Navbar />
+        <Navbar title='Notebooks' />
         <div className="column box">
           <div className="columns mx-1">
             <div className="column m-0 p-1">

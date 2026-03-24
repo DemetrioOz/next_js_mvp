@@ -14,7 +14,7 @@ export default async function Dashboard() {
     <div className="columns is-gapless" style={{ minHeight: '100vh' }}>
       <Menu />
       <main className="column">
-        <Navbar />
+        <Navbar title='Visão Geral' />
         <DataViewer />
         <div className="columns">
           <GraphicDash />

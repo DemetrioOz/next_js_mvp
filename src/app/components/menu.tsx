@@ -9,39 +9,24 @@ export const Menu = () => {
           <Link href="/dashboard">Dashboard</Link>
         </li>
         <li>
-          <a className="is-active">Manage Your Team</a>
+          <Link href="/equipament">Equipamentos</Link>
           <ul>
             <li>
-              <a>Members</a>
+              <Link href="/equipament/notebooks">Notebooks</Link>
             </li>
             <li>
-              <a>Plugins</a>
+              <Link href="/dashboard/peripherals">Perifericos</Link>
             </li>
             <li>
-              <a>Add a member</a>
+              <Link href="/dashboard/peripherals">Smartphones</Link>
+            </li>
+            <li>
+              <Link href="/dashboard/peripherals">Desktops</Link>
             </li>
           </ul>
         </li>
         <li>
-          <a>Invitations</a>
-        </li>
-        <li>
-          <a>Cloud Storage Environment Settings</a>
-        </li>
-        <li>
-          <a>Authentication</a>
-        </li>
-      </ul>
-      <p className="menu-label">Transactions</p>
-      <ul className="menu-list">
-        <li>
-          <a>Payments</a>
-        </li>
-        <li>
-          <a>Transfers</a>
-        </li>
-        <li>
-          <a>Balance</a>
+          <Link href="/dashboard">Colaboradores</Link>
         </li>
       </ul>
     </aside>
