@@ -1,19 +1,12 @@
+import Link from 'next/link';
+
 export const Menu = () => {
   return (
     <aside className="menu m-3 m-3" style={{ width: '15vw' }}>
-      {/* <p className="menu-label">General</p> */}
+      <p className="menu-label">Devices</p>
       <ul className="menu-list">
         <li>
-          <a>Dashboard</a>
-        </li>
-        <li>
-          <a>Customers</a>
-        </li>
-      </ul>
-      <p className="menu-label">Administration</p>
-      <ul className="menu-list">
-        <li>
-          <a>Team Settings</a>
+          <Link href="/dashboard">Dashboard</Link>
         </li>
         <li>
           <a className="is-active">Manage Your Team</a>
