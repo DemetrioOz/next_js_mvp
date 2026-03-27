@@ -17,6 +17,11 @@ export const Navbar = ({ title }: NavbarProps) => {
               <i className="fa-solid fa-magnifying-glass"></i>
             </span>
           </div>
+          <div style={{ fontSize: '2rem', display: 'flex', alignItems: 'center' }}>
+            <span className="icon is-large is-right" style={{ fontSize: '1.5rem' }}>
+              <i className="fa-solid fa-bell"></i>
+            </span>
+          </div>
         </div>
       </div>
     </nav>

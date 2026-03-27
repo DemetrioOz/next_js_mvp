@@ -15,13 +15,13 @@ export const Menu = () => {
               <Link href="/equipament/notebooks">Notebooks</Link>
             </li>
             <li>
-              <Link href="/dashboard/peripherals">Perifericos</Link>
+              <Link href="/equipament/peripherals">Perifericos</Link>
             </li>
             <li>
-              <Link href="/dashboard/peripherals">Smartphones</Link>
+              <Link href="/equipament/peripherals">Smartphones</Link>
             </li>
             <li>
-              <Link href="/dashboard/peripherals">Desktops</Link>
+              <Link href="/equipament/peripherals">Desktops</Link>
             </li>
           </ul>
         </li>

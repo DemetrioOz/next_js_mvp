@@ -1,5 +1,9 @@
 import Link from 'next/link';
 
-export default function Home() {
-  return <Link href="/sign-in">Ir para Login</Link>;
+export default async function Home() {
+  return (
+    <div>
+      <Link href="/sign-in">Ir para Login</Link>
+    </div>
+  );
 }

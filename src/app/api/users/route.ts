@@ -1,8 +1,8 @@
+import { prisma } from "@/app/lib/prisma";
+
 export async function GET(request: Request) {
-  const users = [
-    { id: 1, name: 'Alice' },
-    { id: 2, name: 'Bob' },
-  ];
+  const users = await prisma.user.findMany()
+
   return new Response(JSON.stringify(users), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
